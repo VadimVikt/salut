@@ -1,0 +1,17 @@
+.block {
+    border: antiquewhite 2px solid;
+    border-radius: 2px;
+    /*background-color: lightgoldenrodyellow;*/
+}
+
+.small-font {
+    font-size: xx-small;
+}
+
+.price-block {
+
+}
+
+.quantity {
+    color: green;
+}
