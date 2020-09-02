@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <div class="row">
-<?php foreach ($result as $key => $item) :?>
+<?php foreach ($result as $key => $item) :  ?>
     <?php if ($item['QUANTITY_FIRST_BLOCK'] != 0 && $item['COUNT_SECOND_RANK'] !=0 ) :?>
         <div class="col-md-4 block">
             <img src="<?=$item['PIC']?>" alt="Изображение товара">
@@ -20,11 +20,13 @@
             <b><?=$item['NAME']?></b> <span><?=$item['ARTICLE']?></span>
             <hr>
             <div class="order">
-                <p><?=$item['COUNT_FIRST_RANK']?> / <?=$item['COUNT_THIRD_RANK']?> / <?=$item['COUNT_SECOND_RANK']?></p>
-                <p>Мин. заказ: <?=$item['NAME_SECOND_RANK']?></p>
+<!--                <p>--><?//=$item['COUNT_FIRST_RANK']?><!-- / --><?//=$item['COUNT_THIRD_RANK']?><!-- / --><?//=$item['COUNT_SECOND_RANK']?><!--</p>-->
+                <p><?=$item['BLOCK_X_Y_Z']?></p>
+                <p>Мин. заказ: <?=$item['MIN_ORDER']?></p>
             </div>
             <hr>
             <div class="price">
+
                 <p><?=$item['NAME_FIRST_RANK']?>
                     <span class="price-block">      <?=$item['PRICE_SECOND_BLOCK'] / $item['COUNT_SECOND_RANK']?> р.</span></p>
                 <p><b><?=$item['NAME_SECOND_RANK']?> (<?=$item['COUNT_SECOND_RANK'] . ' ' . mb_strimwidth($item['NAME_FIRST_RANK'], 0, 3, ".") ?>)
@@ -33,9 +35,13 @@
                     <span class="price-block">    <?=$item['PRICE_SECOND_BLOCK'] * $item['COUNT_THIRD_RANK']?> p.</span></p>
                 <p>
                     <button> - </button> Количество <button> + </button>
-                   <span class="quantity">В наличии - <?=intdiv($item['QUANTITY_FIRST_BLOCK'], $item['COUNT_SECOND_RANK']) . ' ' . mb_strimwidth($item['NAME_SECOND_RANK'], 0, 3, ".")?></span>
+                   <span class="quantity">
+                       В наличии -
+                       <?php $param = intdiv($item['QUANTITY_FIRST_BLOCK'], $item['COUNT_SECOND_RANK']);
+                        echo  intdiv($param, $item['COUNT_FIRST_RANK'])  . ' ' . mb_strimwidth($item['NAME_SECOND_RANK'], 0, 3, ".")?></span>
                 </p>
                     <button> Купить </button>
+
             </div>
         </div>
         <?php endif;?>
